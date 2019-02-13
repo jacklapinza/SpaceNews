@@ -12,6 +12,7 @@ data = response.json()
 response = requests.get("http://api.open-notify.org/iss-now.json")
 posizione = response.json()
 
+
 # Funzione per effetto digitazione
 
 
@@ -124,3 +125,24 @@ while True:
             break
     else:
         print("Per favore, inserire una risposta valida.")
+
+
+# PREVISIONE POSIZIONE ISS DATA LA POSIZIONE UTENTE
+
+while True:
+    transizione()
+    previsione = input("Vuoi preveredere quando l'ISS orbiterà sopra di te?(S/N): ").strip().lower()
+
+    if previsione == "s":
+        parameters = {}
+
+        lat = float(input("Inserire la propria latitudine: "))
+        long = float(input("Inserire la propria longitudine: "))
+
+        parameters["lat"] = lat
+        parameters["lon"] = long
+
+        response = requests.get("http://api.open-notify.org/iss-pass.json", params=parameters)
+        posizione = response.json()
+
+        print(posizione)
