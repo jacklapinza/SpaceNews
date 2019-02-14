@@ -20,7 +20,7 @@ posizione = response.json()
 
 def delay(testo):
     for x in testo:
-        print(x, end='')
+        print(x, end="")
         sys.stdout.flush()
         sleep(0.01)
     print("")
@@ -37,11 +37,35 @@ def transizione():
     print(" ")
 
 
+# Funzione per effetto micro_transizione
+
+
+def microtras():
+    print("")
+
+
+# Funzione per effetto display informazione
+
+def effetto(testo):
+    print("")
+    for x in testo:
+        print("#", end="")
+    print("")
+    print(testo)
+
+    for x in testo:
+        print("#", end="")
+    print("")
+
+
 # Messaggio di benvenuto e presentazione funzionalità
 
-delay('''Benvenuti.
-Questo programma vi permetterà di consocere:
-1) Quanti astronuati sono nello spazio in questo momento
+microtras()
+delay("Benvenuti!")
+microtras()
+delay("Questo programma vi permetterà di consocere: ")
+microtras()
+delay('''1) Quanti astronuati sono nello spazio in questo momento
 2) I loro nomi
 3) Dove si trova la Stazione Spaziale Internazionale
 4) L'esatto momento in cui orbiterà sopra di voi''')
@@ -63,7 +87,7 @@ while True:
     else:
         print("Per favore, inserire una risposta valida.")
 
-# NUMERO DI PERSONE NELLO SPAZIO
+# NUMERO DI PERSONE NELLO SPAZIO. ps -> persone spazio
 
 while True:
     transizione()
@@ -71,7 +95,9 @@ while True:
 
     if numero == "s":
         number = (data["number"])
-        print("Attualmente ci sono", number, "persone nello spazio.")
+        numero_pers = "Attualmente ci sono {} persone nello spazio."
+        numero_persone = numero_pers.format(number)
+        effetto(numero_persone)
         break
     elif numero == "n":
         uscita_1 = input("Desideri uscire dal programma?(S/N): ").strip().lower()
@@ -86,7 +112,7 @@ while True:
 # NOMI ASTRONAUTI
 
 while True:
-    transizione()
+    microtras()
     nomi = input("Vuoi conoscere i nomi degli astronauti attualmente nello spazio?(S/N): ").strip().lower()
 
     if nomi == "s":
@@ -172,3 +198,9 @@ while True:
 
         break
     break
+print("")
+print("")
+print("")
+input("Premere invio per uscire dal programma...")
+exit()
+
