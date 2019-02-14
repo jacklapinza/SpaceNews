@@ -120,7 +120,7 @@ while True:
             nome = (data["people"][i]["name"])
             string = "Nome: {}"
             output = string.format(nome)
-            delay(output)
+            effetto(output)
         break
     elif nomi == "n":
         uscita_2 = input("Desideri uscire dal programma?(S/N): ").strip().lower()
@@ -134,7 +134,7 @@ while True:
 # POSIZIONE ISS
 
 while True:
-    transizione()
+    microtras()
     posizione_now = input("Vuoi conoscere la posizione attuale dell' ISS?(S/N): ").strip().lower()
 
     if posizione_now == "s":
