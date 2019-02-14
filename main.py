@@ -4,6 +4,7 @@ from time import sleep
 import webbrowser
 import datetime
 
+
 # Ricezione della risposta dall' API endpoint nomi astronauti.
 
 response = requests.get("http://api.open-notify.org/astros.json")
@@ -141,9 +142,18 @@ while True:
         latitudine = (posizione["iss_position"]["latitude"])
         longitudine = (posizione["iss_position"]["longitude"])
         timestamp = (posizione["timestamp"])
-        print("Latitudine: ", latitudine)
-        print("Longitudine: ", longitudine)
-        print("Timestamp: ", timestamp)
+        conversione_timestamp = datetime.datetime.fromtimestamp(int(timestamp)).strftime('%d-%m-%Y %H:%M:%S')
+        latitudine_1 = "Latitudine: {}"
+        longitudine_1 = "Longitudine: {}"
+        timestamp_1 = "Timestamp: {}"
+
+        latitudine_2 = latitudine_1.format(latitudine)
+        longitudine_2 = longitudine_1.format(longitudine)
+        timestamp_2 = timestamp_1.format(conversione_timestamp)
+
+        effetto(latitudine_2)
+        effetto(longitudine_2)
+        effetto(timestamp_2)
         break
     elif posizione_now == "n":
         uscita_3 = input("Desideri uscire dal programma?(S/N): ").strip().lower()
@@ -158,16 +168,18 @@ while True:
 # PREVISIONE POSIZIONE ISS DATA LA POSIZIONE UTENTE
 
 while True:
-    transizione()
+    microtras()
     while True:
         previsione = input("Vuoi preveredere quando l'ISS orbiterà sopra di te?(S/N): ").strip().lower()
+        microtras()
 
         if previsione == "s":
             permesso = input('''Per facilitare la ricerca della propria latitudine e longitudione
-    se si decide di continuare, verrà aperto il Browser e si verrà indirizzara su un sito
-    di ricerca. Bisognerà quindi inserire la propia località per trovare i due parameteri 
-    richiesti.
-    Continuare?(S/N)''')
+se si decide di continuare, verrà aperto il Browser e si verrà indirizzara su un sito
+di ricerca. Bisognerà quindi inserire la propia località per trovare i due parameteri 
+richiesti.
+Continuare?(S/N)''')
+            microtras()
             if permesso == "s":
                 webbrowser.open('https://www.latlong.net/', new=2, )
                 break
@@ -187,14 +199,18 @@ while True:
         response = requests.get("http://api.open-notify.org/iss-pass.json", params=parameters)
         posizione = response.json()
 
-        print("Di seguito le prossime 5 previsioni in cui sarà possibile osservare l'ISS orbitare sopra di te ;)")
+        microtras()
 
+        print("Di seguito le prossime 5 previsioni in cui sarà possibile osservare l'ISS orbitare sopra di te ;)")
+        microtras()
         for x in range(len(posizione["response"])):
             durata = (posizione["response"][x]["duration"])
             data = (posizione["response"][x]["risetime"])
             conversione_data = datetime.datetime.fromtimestamp(int(data)).strftime('%d-%m-%Y %H:%M:%S')
             risultato = "L'ISS sarà visibile, considerata la tua posizione il {}, e sarà osservabile per {} secondi"
-            print(risultato.format(conversione_data, durata))
+            final = risultato.format(conversione_data, durata)
+
+            effetto(final)
 
         break
     break
@@ -203,4 +219,3 @@ print("")
 print("")
 input("Premere invio per uscire dal programma...")
 exit()
-
