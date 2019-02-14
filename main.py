@@ -1,6 +1,8 @@
 import requests
 import sys
 from time import sleep
+import webbrowser
+import datetime
 
 # Ricezione della risposta dall' API endpoint nomi astronauti.
 
@@ -41,8 +43,8 @@ delay('''Benvenuti.
 Questo programma vi permetterà di consocere:
 1) Quanti astronuati sono nello spazio in questo momento
 2) I loro nomi
-3) # Dove si trova la Stazione Spaziale Internazionale
-4) # L'esatto momento in cui orbiterà sopra di voi''')
+3) Dove si trova la Stazione Spaziale Internazionale
+4) L'esatto momento in cui orbiterà sopra di voi''')
 
 transizione()
 
@@ -131,13 +133,27 @@ while True:
 
 while True:
     transizione()
-    previsione = input("Vuoi preveredere quando l'ISS orbiterà sopra di te?(S/N): ").strip().lower()
+    while True:
+        previsione = input("Vuoi preveredere quando l'ISS orbiterà sopra di te?(S/N): ").strip().lower()
 
-    if previsione == "s":
-        parameters = {}
-
+        if previsione == "s":
+            permesso = input('''Per facilitare la ricerca della propria latitudine e longitudione
+    se si decide di continuare, verrà aperto il Browser e si verrà indirizzara su un sito
+    di ricerca. Bisognerà quindi inserire la propia località per trovare i due parameteri 
+    richiesti.
+    Continuare?(S/N)''')
+            if permesso == "s":
+                webbrowser.open('https://www.latlong.net/', new=2, )
+                break
+            elif permesso == "n":
+                break
+        elif previsione == "n":
+            exit()
+    while True:
         lat = float(input("Inserire la propria latitudine: "))
         long = float(input("Inserire la propria longitudine: "))
+
+        parameters = {}
 
         parameters["lat"] = lat
         parameters["lon"] = long
@@ -145,4 +161,14 @@ while True:
         response = requests.get("http://api.open-notify.org/iss-pass.json", params=parameters)
         posizione = response.json()
 
-        print(posizione)
+        print("Di seguito le prossime 5 previsioni in cui sarà possibile osservare l'ISS orbitare sopra di te ;)")
+
+        for x in range(len(posizione["response"])):
+            durata = (posizione["response"][x]["duration"])
+            data = (posizione["response"][x]["risetime"])
+            conversione_data = datetime.datetime.fromtimestamp(int(data)).strftime('%d-%m-%Y %H:%M:%S')
+            risultato = "L'ISS sarà visibile, considerata la tua posizione il {}, e sarà osservabile per {} secondi"
+            print(risultato.format(conversione_data, durata))
+
+        break
+    break
