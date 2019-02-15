@@ -2,13 +2,13 @@
 # SpaceNews
 > Dove orbita chi orbita?
 
-Un semplice script in Python che permette di ricevere informazioni sul numero di astronauti attualemente
+Un semplice script in Python che permette di ricevere informazioni sul numero di astronauti attualmente
 nello spazio, sulla posizione della Stazione Spaziale Internazionale e la previsione del suo passaggio
 data la posizione dell'utente.
 
 ## Librerie utilizzate
 
-Di seguito le librerie utilizzate
+Di seguito le librerie utilizzate:
 
 ```python
 import requests
@@ -25,11 +25,11 @@ Le informazioni che si potranno chiedere sono le seguenti:
 * Quanti astronauti sono attualemente nello spazio
 * Quali sono i loro nomi
 * Dove si trova l'ISS in questo momento
-* Previsione di passaggio dell'ISS data **latitudine** e **longitudine** dell'utente
+* Una previsione di passaggio dell'ISS data **latitudine** e **longitudine** dell'utente
 
 ## Exe
 
-Ho inserito, nella cartalle main la versione StandAlone dello scirpt, generata tramite
+Nella cartella **main** si trova la versione StandAlone .exe dello scirpt, generata tramite
 Pyinstaller.
 
 ## Contribuire
