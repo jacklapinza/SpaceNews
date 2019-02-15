@@ -1,6 +1,6 @@
 
 # SpaceNews
-> Additional information or tagline
+> Dove orbita chi orbita?
 
 Un semplice script in Python che permette di ricevere informazioni sul numero di astronauti attualemente
 nello spazio, sulla posizione della Stazione Spaziale Internazionale e la previsione del suo passaggio
@@ -80,9 +80,20 @@ Funzione:
 delay()
 ```
 
-Outuput:
+Output:
 
 ![](Output_Gif/delay_function.gif)
+
+Funzione:
+
+```python
+effetto()
+```
+Output:
+
+![](Output_Gif/effetto_output.gif)
+
+
 
 ## Licensing
 
