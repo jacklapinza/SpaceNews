@@ -1,133 +1,89 @@
 
-# Name of the project
+# SpaceNews
 > Additional information or tagline
 
-A brief description of your project, what it is used for and how does life get
-awesome when someone starts to use it.
+Un semplice script in Python che permette di ricevere informazioni sul numero di astronauti attualemente
+nello spazio, sulla posizione della Stazione Spaziale Internazionale e la previsione del suo passaggio
+data la posizione dell'utente.
 
-## Installing / Getting started
+## Librerie utilizzate
 
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
+Di seguito le librerie utilizzate
 
-```shell
-packagemanager install awesome-project
-awesome-project start
-awesome-project "Do something!"  # prints "Nah."
+```python
+import requests
+import sys
+from time import sleep
+import webbrowser
+import datetime
 ```
-
-Here you should say what actually happens when you execute the code above.
-
-### Initial Configuration
-
-Some projects require initial configuration (e.g. access tokens or keys, `npm i`).
-This is the section where you would document those requirements.
-
-## Developing
-
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
-
-```shell
-git clone https://github.com/your/awesome-project.git
-cd awesome-project/
-packagemanager install
-```
-
-And state what happens step-by-step.
-
-### Building
-
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here:
-
-```shell
-./configure
-make
-make install
-```
-
-Here again you should state what actually happens when the code above gets
-executed.
-
-### Deploying / Publishing
-
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
-
-```shell
-packagemanager deploy awesome-project -s server.com -u username -p password
-```
-
-And again you'd need to tell what the previous code actually does.
 
 ## Features
 
-What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
+Le informazioni che si potranno chiedere sono le seguenti:
 
-## Configuration
+* Quanti astronauti sono attualemente nello spazio
+* Quali sono i loro nomi
+* Dove si trova l'ISS in questo momento
+* Previsione di passaggio dell'ISS data **latitudine** e **longitudine** dell'utente
 
-Here you should write what are all of the configurations a user can enter when
-using the project.
+## Exe
 
-#### Argument 1
-Type: `String`  
-Default: `'default value'`
+Ho inserito, nella cartalle main la versione StandAlone dello scirpt, generata tramite
+Pyinstaller.
 
-State what an argument does and how you can use it. If needed, you can provide
-an example below.
+## Contribuire
 
-Example:
-```bash
-awesome-project "Some other value"  # Prints "You're nailing this readme!"
-```
-
-#### Argument 2
-Type: `Number|Boolean`  
-Default: 100
-
-Copy-paste as many of these as you need.
-
-## Contributing
-
-When you publish something open source, one of the greatest motivations is that
-anyone can just jump in and start contributing to your project.
-
-These paragraphs are meant to welcome those kind souls to feel that they are
-needed. You should state something like:
-
-"If you'd like to contribute, please fork the repository and use a feature
-branch. Pull requests are warmly welcome."
-
-If there's anything else the developer needs to know (e.g. the code style
-guide), you should link it here. If there's a lot of things to take into
-consideration, it is common to separate this section to its own file called
-`CONTRIBUTING.md` (or similar). If so, you should say that it exists here.
+Qualsiasi contributo è più che buon accetto. Ho cercato di commentare il più possibile
+il codice per renderlo il più chiaro possibile, ma in alcuni punti le soluzioni che ho
+adoperato sono decisamente poco eleganti oltre che non ottimali.
+Per questo invito tutti a dare il loro contributo.
 
 ## Links
 
-Even though this information can be found inside the project on machine-readable
-format like in a .json file, it's good to include a summary of most useful
-links to humans using your project. You can include links like:
+L'intero programma si appoggia a diverse API, che elenco qui di seguito:
 
-- Project homepage: https://your.github.com/awesome-project/
-- Repository: https://github.com/your/awesome-project/
-- Issue tracker: https://github.com/your/awesome-project/issues
-  - In case of sensitive bugs like security vulnerabilities, please contact
-    my@email.com directly instead of using issue tracker. We value your effort
-    to improve the security and privacy of this project!
-- Related projects:
-  - Your other project: https://github.com/your/other-project/
-  - Someone else's project: https://github.com/someones/awesome-project/
+* [People in space right now](http://api.open-notify.org/astros.json)
+* [International Space Station Current Location](http://api.open-notify.org/iss-now.json)
+* [International Space Station Pass Times](http://api.open-notify.org/iss-pass.json?lat=LAT&lon=LON)
 
+## To do
+
+Aggiornerò questa lista via facendo, riporto di seguito quali sono le migliorie che vorrei apportare:
+* Separazione in un file esterno di tutte le funzioni (Non essenziale)
+* Unione di due funzioni, riportate di seguito, utilizzate unicamente per creare effetti grafici
+
+```python
+def delay(testo):
+    for x in testo:
+        print(x, end="")
+        sys.stdout.flush()
+        sleep(0.01)
+    print("")
+```
+
+```python
+def effetto(testo):
+    print("")
+    for x in testo:
+        print("#", end="")
+    print("")
+    print(testo)
+
+    for x in testo:
+        print("#", end="")
+    print("")
+```
+Funzione:
+
+```python
+delay()
+```
+
+Outuput:
+
+![](Output_Gif/delay_function.gif)
 
 ## Licensing
-
-One really important part: Give your project a proper license. Here you should
-state what the license is and how to find the text version of the license.
-Something like:
 
 "The code in this project is licensed under MIT license."
