@@ -96,8 +96,8 @@ while True:
 
     if numero == "s":
         number = (data["number"])
-        numero_pers = "Attualmente ci sono {} persone nello spazio."
-        numero_persone = numero_pers.format(number)
+        numero_astronauti = "Attualmente ci sono {} persone nello spazio."
+        numero_persone = numero_astronauti.format(number)
         effetto(numero_persone)
         break
     elif numero == "n":
