@@ -98,3 +98,9 @@ Output:
 ## Licensing
 
 "The code in this project is licensed under MIT license."
+
+## ReadMe
+
+Per realizzare questo ReadMe ho utilizzato la seguente [Repository](https://github.com/jehna/readme-best-practices.git)
+
+This ReadMe was writtin using this [Repository](https://github.com/jehna/readme-best-practices.git)
