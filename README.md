@@ -51,7 +51,7 @@ L'intero programma si appoggia a diverse API, che elenco qui di seguito:
 
 Aggiornerò questa lista via facendo, riporto di seguito quali sono le migliorie che vorrei apportare:
 * Separazione in un file esterno di tutte le funzioni (Non essenziale)
-* Unione di due funzioni, riportate di seguito, utilizzate unicamente per creare effetti grafici
+* Unione di due funzioni, riportate di seguito, utilizzate unicamente per creare effetti grafici:
 
 ```python
 def delay(testo):
