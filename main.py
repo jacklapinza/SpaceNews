@@ -49,12 +49,12 @@ def microtras():
 
 def effetto(testo):
     print("")
-    for x in testo:
+    for _ in testo:
         print("#", end="")
     print("")
     print(testo)
 
-    for x in testo:
+    for _ in testo:
         print("#", end="")
     print("")
 
@@ -117,7 +117,7 @@ while True:
     nomi = input("Vuoi conoscere i nomi degli astronauti attualmente nello spazio?(S/N): ").strip().lower()
 
     if nomi == "s":
-        for i in range(len(data)):
+        for i in range(data["number"]):
             nome = (data["people"][i]["name"])
             string = "Nome: {}"
             output = string.format(nome)
