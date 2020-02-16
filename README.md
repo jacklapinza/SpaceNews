@@ -20,7 +20,7 @@ import datetime
 
 ## Features
 
-Le informazioni che si potranno chiedere sono le seguenti:
+Le informazioni a cui si potrà accedere sono le seguenti: 
 
 * Quanti astronauti sono attualemente nello spazio
 * Quali sono i loro nomi
