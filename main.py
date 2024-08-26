@@ -7,7 +7,7 @@ import datetime
 
 # Ricezione della risposta dall' API endpoint nomi astronauti.
 # last dummy change
-
+# i hope this is the last
 
 
 response = requests.get("http://api.open-notify.org/astros.json")
