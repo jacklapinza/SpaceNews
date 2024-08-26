@@ -6,6 +6,7 @@ import datetime
 
 
 # Ricezione della risposta dall' API endpoint nomi astronauti.
+# last dummy change
 
 
 
