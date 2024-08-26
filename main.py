@@ -7,7 +7,6 @@ import datetime
 
 # Ricezione della risposta dall' API endpoint nomi astronauti.
 
-# dummy change
 
 
 response = requests.get("http://api.open-notify.org/astros.json")
